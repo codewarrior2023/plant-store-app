@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    marginTop: 15,
   },
   dot: {
     backgroundColor: '#e0e6e0',
@@ -105,7 +106,5 @@ const styles = StyleSheet.create({
     height: height * 0.30,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    borderColor: 'red',
-    borderWidth: 1,
   }
 });
