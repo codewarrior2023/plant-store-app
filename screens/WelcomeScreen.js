@@ -1,5 +1,8 @@
-import { Dimensions, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Dimensions, FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useRef } from 'react';
 import Slide from '../components/Slide';
+import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 
 const GREETING_DATA = [
     {
@@ -29,6 +32,8 @@ const { width, height } = Dimensions.get('screen');
 
 export default function WelcomeScreen() {
 
+    const scrollX = useRef(new Animated.Value(0)).current;
+
     return (
         <ScrollView style={styles.container}>
             <FlatList 
@@ -38,7 +43,41 @@ export default function WelcomeScreen() {
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}
                 snapToAlignment="center"
+                scrollEventThrottle={16}
+                onScroll={Animated.event ([
+                    {
+                        nativeEvent: {
+                            contentOffset: {
+                                x: scrollX,
+                            },
+                        },
+                    },
+                ], {useNativeDriver: false}
+                )}
             />
+
+            <View style={styles.pagination}>
+                {GREETING_DATA.map((_, index) => {
+
+                    const backgroundColor = scrollX.interpolate({
+                        inputRange:[(index - 1) * width, index * width, (index + 1) * width],
+                        outputRange: ['#e0e6e0','#4b8e4b', '#e0e6e0'],
+                        extrapolate: 'clamp',
+                    });
+
+                    return (
+                        <Animated.View 
+                            style={[styles.dot, { backgroundColor: backgroundColor }]} 
+                            key={index}
+                        /> 
+                    );
+                })}
+            </View>
+
+            <View style={styles.buttons}>
+                <PrimaryButton text="Sign Up"/>
+                <SecondaryButton text="Log In"/>
+            </View>
         </ScrollView>
   );
 }
@@ -48,4 +87,25 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
   },
+  pagination: {
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  dot: {
+    backgroundColor: '#e0e6e0',
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 5,
+  },
+  buttons: {
+    width: width,
+    height: height * 0.30,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
+  }
 });

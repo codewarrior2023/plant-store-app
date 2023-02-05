@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('screen')
 export default function Slide({item}) {
     return (
         <View style={styles.container}>
-            <Image 
+            <Image style={styles.image}
                 source={item.image}
                 resizeMode="contain"
             />
@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: 'red',
         borderWidth: 1,
+    },
+    image: {
+        width: 375,
+        height: 375,
     },
     content: {
         justifyContent: 'center',
