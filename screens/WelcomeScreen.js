@@ -35,15 +35,21 @@ export default function WelcomeScreen() {
     const scrollX = useRef(new Animated.Value(0)).current;
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+                paddingTop: 50,
+                paddingBottom: 50,
+            }} 
+        >
             <FlatList 
                 data={GREETING_DATA}
-                renderItem={({item}) => <Slide item={item}/>}
+                renderItem={({item}) => <Slide item={item} scrollX={scrollX}/>}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}
                 snapToAlignment="center"
-                scrollEventThrottle={16}
+                scrollEventThrottle={10}
                 onScroll={Animated.event ([
                     {
                         nativeEvent: {
@@ -103,8 +109,10 @@ const styles = StyleSheet.create({
   },
   buttons: {
     width: width,
-    height: height * 0.30,
+    height: height * 0.28,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
   }
 });

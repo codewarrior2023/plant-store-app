@@ -1,11 +1,20 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Animated, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 const { width, height } = Dimensions.get('screen')
 
-export default function Slide({item}) {
+export default function Slide({item, scrollX}) {
+
+    const translateY = scrollX.interpolate({
+        inputRange:[(item.id - 1) * width, item.id * width, (item.id + 1) * width],
+        outputRange: [-60, 0, -60],
+        extrapolate: 'clamp',
+    });
+
     return (
         <View style={styles.container}>
-            <Image style={styles.image}
+            <Animated.Image style={[styles.image, {
+                transform:[{translateY: translateY}]
+            }]}
                 source={item.image}
                 resizeMode="contain"
             />
@@ -25,7 +34,6 @@ export default function Slide({item}) {
 const styles = StyleSheet.create({
     container: {
         width: width,
-        height: height * 0.60,
         alignItems: 'center',
         justifyContent: 'center',
     },
