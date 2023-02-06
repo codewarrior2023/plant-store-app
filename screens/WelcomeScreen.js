@@ -35,56 +35,64 @@ export default function WelcomeScreen() {
     const scrollX = useRef(new Animated.Value(0)).current;
 
     return (
-        <ScrollView style={styles.container}
+    <View style={styles.container}>
+        <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
-                paddingTop: 50,
-                paddingBottom: 50,
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingBottom: 75,
             }} 
         >
-            <FlatList 
-                data={GREETING_DATA}
-                renderItem={({item}) => <Slide item={item} scrollX={scrollX}/>}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                pagingEnabled={true}
-                snapToAlignment="center"
-                scrollEventThrottle={10}
-                onScroll={Animated.event ([
-                    {
-                        nativeEvent: {
-                            contentOffset: {
-                                x: scrollX,
+            <View style={styles.slides}>
+                <FlatList 
+                    data={GREETING_DATA}
+                    renderItem={({item}) => <Slide item={item} scrollX={scrollX}/>}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    pagingEnabled={true}
+                    snapToAlignment="center"
+                    scrollEventThrottle={10}
+                    onScroll={Animated.event ([
+                        {
+                            nativeEvent: {
+                                contentOffset: {
+                                    x: scrollX,
+                                },
                             },
                         },
-                    },
-                ], {useNativeDriver: false}
-                )}
-            />
+                    ], {useNativeDriver: false}
+                    )}
+                />
 
-            <View style={styles.pagination}>
-                {GREETING_DATA.map((_, index) => {
+                <View style={styles.pagination}>
+                    {GREETING_DATA.map((_, index) => {
 
-                    const backgroundColor = scrollX.interpolate({
-                        inputRange:[(index - 1) * width, index * width, (index + 1) * width],
-                        outputRange: ['#e0e6e0','#4b8e4b', '#e0e6e0'],
-                        extrapolate: 'clamp',
-                    });
+                        const backgroundColor = scrollX.interpolate({
+                            inputRange:[(index - 1) * width, index * width, (index + 1) * width],
+                            outputRange: ['#e0e6e0','#4b8e4b', '#e0e6e0'],
+                            extrapolate: 'clamp',
+                        });
 
-                    return (
-                        <Animated.View 
-                            style={[styles.dot, { backgroundColor: backgroundColor }]} 
-                            key={index}
-                        /> 
-                    );
-                })}
+                        return (
+                            <Animated.View 
+                                style={[styles.dot, { backgroundColor: backgroundColor }]} 
+                                key={index}
+                            /> 
+                        );
+                    })}
+                </View>
             </View>
 
             <View style={styles.buttons}>
                 <PrimaryButton text="Sign Up"/>
                 <SecondaryButton text="Log In"/>
             </View>
-        </ScrollView>
+
+        </ScrollView> 
+    </View>
+    
   );
 }
 
@@ -93,12 +101,17 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
   },
+  slides: {
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   pagination: {
     width: width,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 15,
+    marginTop: 25,
   },
   dot: {
     backgroundColor: '#e0e6e0',
@@ -109,10 +122,37 @@ const styles = StyleSheet.create({
   },
   buttons: {
     width: width,
-    height: height * 0.28,
-    justifyContent: 'flex-end',
+    height: height * 0.25,
+    justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'red',
-    borderWidth: 1,
+    marginTop: 25,
+    padding: 15,
   }
 });
+
+/*
+            <View style={styles.buttons}>
+                <PrimaryButton text="Sign Up"/>
+                <SecondaryButton text="Log In"/>
+            </View>
+*/
+
+/*
+                <View style={styles.pagination}>
+                    {GREETING_DATA.map((_, index) => {
+
+                        const backgroundColor = scrollX.interpolate({
+                            inputRange:[(index - 1) * width, index * width, (index + 1) * width],
+                            outputRange: ['#e0e6e0','#4b8e4b', '#e0e6e0'],
+                            extrapolate: 'clamp',
+                        });
+
+                        return (
+                            <Animated.View 
+                                style={[styles.dot, { backgroundColor: backgroundColor }]} 
+                                key={index}
+                            /> 
+                        );
+                    })}
+                </View>
+*/

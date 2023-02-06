@@ -20,7 +20,7 @@ export default function App() {
     <AppLoading />
   } else {
     return (
-      <SafeAreaView>
+      <SafeAreaView view={styles.container}>
         <WelcomeScreen />
       </SafeAreaView>
     );
@@ -28,5 +28,7 @@ export default function App() {
 } 
 
 const styles = StyleSheet.create({
-
+  container: {
+    //flex: 1,
+  },
 });

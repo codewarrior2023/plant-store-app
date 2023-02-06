@@ -34,6 +34,7 @@ export default function Slide({item, scrollX}) {
 const styles = StyleSheet.create({
     container: {
         width: width,
+        // flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
