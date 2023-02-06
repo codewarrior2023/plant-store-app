@@ -39,10 +39,10 @@ export default function WelcomeScreen() {
         <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
-                flex: 1,
+                flexGrow: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingBottom: 75,
+                paddingBottom: 30,
             }} 
         >
             <View style={styles.slides}>
@@ -89,7 +89,6 @@ export default function WelcomeScreen() {
                 <PrimaryButton text="Sign Up"/>
                 <SecondaryButton text="Log In"/>
             </View>
-
         </ScrollView> 
     </View>
     
@@ -103,8 +102,6 @@ const styles = StyleSheet.create({
   },
   slides: {
     width: width,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   pagination: {
     width: width,
@@ -126,33 +123,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 25,
-    padding: 15,
   }
 });
-
-/*
-            <View style={styles.buttons}>
-                <PrimaryButton text="Sign Up"/>
-                <SecondaryButton text="Log In"/>
-            </View>
-*/
-
-/*
-                <View style={styles.pagination}>
-                    {GREETING_DATA.map((_, index) => {
-
-                        const backgroundColor = scrollX.interpolate({
-                            inputRange:[(index - 1) * width, index * width, (index + 1) * width],
-                            outputRange: ['#e0e6e0','#4b8e4b', '#e0e6e0'],
-                            extrapolate: 'clamp',
-                        });
-
-                        return (
-                            <Animated.View 
-                                style={[styles.dot, { backgroundColor: backgroundColor }]} 
-                                key={index}
-                            /> 
-                        );
-                    })}
-                </View>
-*/
