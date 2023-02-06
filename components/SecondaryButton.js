@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export default function SecondaryButton({text}) {
+const SecondaryButton = ({text}) => {
     return( 
         <TouchableOpacity style={styles.button} activeOpacity={0.4}>
             <Text style={styles.text}>
@@ -9,6 +9,8 @@ export default function SecondaryButton({text}) {
         </TouchableOpacity>
     );
 }
+
+export default SecondaryButton;
 
 const styles = StyleSheet.create({
     button: {
