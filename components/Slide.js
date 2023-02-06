@@ -2,7 +2,7 @@ import { Animated, Dimensions, Image, StyleSheet, Text, View } from 'react-nativ
 
 const { width, height } = Dimensions.get('screen')
 
-export default function Slide({item, scrollX}) {
+const Slide = ({item, scrollX}) => {
 
     const translateY = scrollX.interpolate({
         inputRange:[(item.id - 1) * width, item.id * width, (item.id + 1) * width],
@@ -30,6 +30,8 @@ export default function Slide({item, scrollX}) {
         </View>
     );
 }
+
+export default Slide;
 
 const styles = StyleSheet.create({
     container: {

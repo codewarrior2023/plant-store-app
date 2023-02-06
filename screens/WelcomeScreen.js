@@ -30,7 +30,7 @@ const GREETING_DATA = [
 
 const { width, height } = Dimensions.get('screen');
 
-export default function WelcomeScreen() {
+const WelcomeScreen = () => {
 
     const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -94,6 +94,8 @@ export default function WelcomeScreen() {
     
   );
 }
+
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   container: {

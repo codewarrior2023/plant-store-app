@@ -1,5 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from './screens/WelcomeScreen';
+import SignupScreen from './screens/SignupScreen';
+import LoginScreen from './screens/LoginScreen';
 import AppLoading from 'expo-app-loading';
 import { 
   useFonts, 
@@ -21,7 +23,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaView view={styles.container}>
-        <WelcomeScreen />
+        <LoginScreen />
       </SafeAreaView>
     );
   }
