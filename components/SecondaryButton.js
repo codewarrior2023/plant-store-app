@@ -1,4 +1,6 @@
-import {StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native'
+
+const { width, height } = Dimensions.get('screen');
 
 const SecondaryButton = ({text}) => {
     return( 
@@ -14,8 +16,8 @@ export default SecondaryButton;
 
 const styles = StyleSheet.create({
     button: {
-        width: 360,
-        height: 55,
+        width: width - 40,
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#4b8e4b',

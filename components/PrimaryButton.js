@@ -1,4 +1,6 @@
-import {StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native'
+
+const { width, height } = Dimensions.get('screen');
 
 const PrimaryButton = ({text}) => {
     return( 
@@ -15,8 +17,8 @@ export default PrimaryButton;
 const styles = StyleSheet.create({
     button: {
         backgroundColor: '#4b8e4b',
-        width: 360,
-        height: 55,
+        width: width - 40,
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,

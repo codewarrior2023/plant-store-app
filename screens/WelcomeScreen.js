@@ -40,7 +40,7 @@ const WelcomeScreen = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
                 flexGrow: 1,
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 alignItems: 'center',
                 paddingBottom: 30,
             }} 
