@@ -36,15 +36,7 @@ const WelcomeScreen = () => {
 
     return (
     <View style={styles.container}>
-        <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-                flexGrow: 1,
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                paddingBottom: 30,
-            }} 
-        >
+
             <View style={styles.slides}>
                 <FlatList 
                     data={GREETING_DATA}
@@ -89,7 +81,7 @@ const WelcomeScreen = () => {
                 <PrimaryButton text="Sign Up"/>
                 <SecondaryButton text="Log In"/>
             </View>
-        </ScrollView> 
+        
     </View>
     
   );
@@ -99,11 +91,13 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    height: height,
-    width: width,
+    height: "100%",
+    width: "100%",
   },
   slides: {
+    height: "75%",
     width: width,
+    //backgroundColor: 'red',
   },
   pagination: {
     width: width,
@@ -121,9 +115,27 @@ const styles = StyleSheet.create({
   },
   buttons: {
     width: width,
-    height: height * 0.25,
+    height: "25%",
+    // backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 25,
   }
 });
+
+
+
+/*
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+                flexGrow: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingBottom: 30,
+            }} 
+        >
+
+        </ScrollView> 
+
+
+*/

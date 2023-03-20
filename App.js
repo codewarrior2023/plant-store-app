@@ -22,9 +22,9 @@ export default function App() {
     <AppLoading />
   } else {
     return (
-      <SafeAreaView view={styles.container}>
-        <LoginScreen />
-      </SafeAreaView>
+      <View view={styles.container}>
+        <WelcomeScreen />
+      </View>
     );
   }
 } 

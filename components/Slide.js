@@ -36,12 +36,13 @@ export default Slide;
 const styles = StyleSheet.create({
     container: {
         width: width,
+        height: "100%",
         alignItems: 'center',
         justifyContent: 'center', 
     },
     image: {
-        width: 375,
-        height: 375,
+        width: "70%",
+        height: "50%",
     },
     content: {
         justifyContent: 'center',

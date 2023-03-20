@@ -16,8 +16,8 @@ export default SecondaryButton;
 
 const styles = StyleSheet.create({
     button: {
-        width: width - 40,
-        height: 60,
+        width: "85%",
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#4b8e4b',

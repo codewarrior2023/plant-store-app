@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     header_logo: {
         width: 105,
         height: 105,
+        marginTop: 15,
         marginBottom: 25,
     },
     header_title: {
@@ -197,5 +198,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 25,
+        marginBottom: 15,
     },
   });

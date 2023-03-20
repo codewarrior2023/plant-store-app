@@ -17,8 +17,8 @@ export default PrimaryButton;
 const styles = StyleSheet.create({
     button: {
         backgroundColor: '#4b8e4b',
-        width: width - 40,
-        height: 60,
+        width: "85%",
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
